@@ -8,7 +8,8 @@ class AssetsPaths {
 
 class AppImages {
   static const String logo = '${AssetsPaths.images}/logo.png';
-
+  static const String onboarding1 = '${AssetsPaths.images}/onboarding1.png';
+  static const String onboarding2 = '${AssetsPaths.images}/onboarding2.png';
 }
 
 class AppIcons {}
