@@ -10,6 +10,12 @@ class AppImages {
   static const String logo = '${AssetsPaths.images}/logo.png';
   static const String onboarding1 = '${AssetsPaths.images}/onboarding1.png';
   static const String onboarding2 = '${AssetsPaths.images}/onboarding2.png';
+  static const String background = '${AssetsPaths.images}/background.png';
+  static const String lock = '${AssetsPaths.images}/lock.png';
+  static const String email = '${AssetsPaths.images}/email.png';
+  static const String google = '${AssetsPaths.images}/google.png';
+  static const String facebook = '${AssetsPaths.images}/facebook.png';
+  static const String buttonArrow = '${AssetsPaths.images}/button_arrow.png';
 }
 
 class AppIcons {}
