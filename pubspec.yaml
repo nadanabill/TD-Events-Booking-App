@@ -58,5 +58,10 @@ flutter:
   fonts:
     - family: AirbnbCereal
       fonts:
-        - asset: assets/fonts/Airbnb Cereal App Black.ttf
+        - asset: assets/fonts/AirbnbCereal/AirbnbCereal_W_Bd.otf
+        - asset: assets/fonts/AirbnbCereal/AirbnbCereal_W_Bk.otf
+        - asset: assets/fonts/AirbnbCereal/AirbnbCereal_W_Blk.otf
+        - asset: assets/fonts/AirbnbCereal/AirbnbCereal_W_Lt.otf
+        - asset: assets/fonts/AirbnbCereal/AirbnbCereal_W_Md.otf
+        - asset: assets/fonts/AirbnbCereal/AirbnbCereal_W_XBd.otf
 
