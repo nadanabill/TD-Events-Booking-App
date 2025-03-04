@@ -41,8 +41,8 @@ class DefaultButtonWidget extends StatelessWidget {
       height: height ?? 58.h,
       width: width ?? double.infinity,
       padding: hasPadding
-          ? EdgeInsets.zero
-          : const EdgeInsets.symmetric(horizontal: 20),
+          ? const EdgeInsets.symmetric(horizontal: 20)
+          : EdgeInsets.zero,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: elevation,
