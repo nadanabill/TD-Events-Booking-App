@@ -16,6 +16,7 @@ class AppImages {
   static const String google = '${AssetsPaths.images}/google.png';
   static const String facebook = '${AssetsPaths.images}/facebook.png';
   static const String buttonArrow = '${AssetsPaths.images}/button_arrow.png';
+  static const String profile = '${AssetsPaths.images}/profile.png';
 }
 
 class AppIcons {}
