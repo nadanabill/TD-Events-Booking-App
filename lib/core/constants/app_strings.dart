@@ -11,4 +11,9 @@ class AppStrings {
   static String loginWithGoogle = 'Login with Google';
   static String loginWithFacebook = 'Login with Facebook';
   static String doNotHaveAnAccount = 'Don’t have an account?  ';
+  static String fullName = 'Full Name';
+  static String password = 'Password';
+  static String confirmPassword = 'Confirm Password';
+  static String alreadyHaveAnAccount = 'Already have an account?  ';
+  static String passwordsDoNotMatch = 'Passwords don’t match';
 }
