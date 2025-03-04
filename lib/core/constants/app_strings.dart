@@ -16,4 +16,9 @@ class AppStrings {
   static String confirmPassword = 'Confirm Password';
   static String alreadyHaveAnAccount = 'Already have an account?  ';
   static String passwordsDoNotMatch = 'Passwords don’t match';
+  static String continueText = 'continue';
+  static String resendCodeIn = 'Resend code in ';
+  static String resendCode = 'Resend code';
+  static String verification = 'Verification';
+  static String codeSentText = 'We’ve send you the verification code on';
 }
