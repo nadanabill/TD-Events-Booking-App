@@ -17,6 +17,7 @@ class AppImages {
   static const String facebook = '${AssetsPaths.images}/facebook.png';
   static const String buttonArrow = '${AssetsPaths.images}/button_arrow.png';
   static const String profile = '${AssetsPaths.images}/profile.png';
+  static const String prize = '${AssetsPaths.images}/prize.png';
 }
 
 class AppIcons {}
@@ -25,5 +26,15 @@ class AppLotties {}
 
 class AppSvgs {
   static const String logo = '${AssetsPaths.svgs}/logo.svg';
-
+  static const String explore = '${AssetsPaths.svgs}/explore.svg';
+  static const String calendar = '${AssetsPaths.svgs}/calendar.svg';
+  static const String location = '${AssetsPaths.svgs}/location.svg';
+  static const String profile = '${AssetsPaths.svgs}/profile.svg';
+  static const String arrow = '${AssetsPaths.svgs}/arrow.svg';
+  static const String menu = '${AssetsPaths.svgs}/menu.svg';
+  static const String notifications = '${AssetsPaths.svgs}/notifications.svg';
+  static const String search = '${AssetsPaths.svgs}/search.svg';
+  static const String filter = '${AssetsPaths.svgs}/filter.svg';
+  static const String bookmark = '${AssetsPaths.svgs}/bookmark.svg';
+  static const String mapPin = '${AssetsPaths.svgs}/map_pin.svg';
 }
