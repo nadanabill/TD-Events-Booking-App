@@ -38,6 +38,7 @@ dependencies:
   flutter_svg:
   lottie:
   smooth_page_indicator:
+  pin_code_fields:
 # Data Storage
   shared_preferences:
 # Device preview
