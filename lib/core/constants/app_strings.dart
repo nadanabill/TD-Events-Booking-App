@@ -21,4 +21,19 @@ class AppStrings {
   static String resendCode = 'Resend code';
   static String verification = 'Verification';
   static String codeSentText = 'We’ve send you the verification code on';
+  static String currentLocation = 'Current Location';
+  static String upcomingEvents = 'Upcoming Events';
+  static String nearbyEvents = 'Nearby Events';
+  static String seeAll = 'See All';
+  static String inviteYourFriends = 'Invite your friends';
+  static String invite = 'INVITE';
+  static String explore = 'Explore';
+  static String events = 'Events';
+  static String map = 'Map';
+  static String profile = 'Profile';
+  static String sports = 'Sports';
+  static String food = 'Food';
+  static String music = 'Music';
+  static String filters = 'Filters';
+  static String get20ForTicket = 'Get \$20 for ticket';
 }
