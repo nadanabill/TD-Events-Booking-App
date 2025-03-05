@@ -78,6 +78,12 @@ class AppTextStyles {
     color: AppColors.white,
     fontFamily: fontFamily,
   );
+  static TextStyle font24White400 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+    fontFamily: fontFamily,
+  );
   static TextStyle font18Black500 = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
@@ -112,6 +118,18 @@ class AppTextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.black,
+    fontFamily: fontFamily,
+  );
+  static TextStyle font35Black400 = TextStyle(
+    fontSize: 35.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+    fontFamily: fontFamily,
+  );
+  static TextStyle font12LightGray400 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.lightGrey,
     fontFamily: fontFamily,
   );
   static TextStyle font14LightGray400 = TextStyle(
