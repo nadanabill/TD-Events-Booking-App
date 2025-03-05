@@ -7,8 +7,8 @@ import '../../../../core/helpers/spaces.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 
-class EventItemWidget extends StatelessWidget {
-  const EventItemWidget({super.key});
+class EventsItemWidget extends StatelessWidget {
+  const EventsItemWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
