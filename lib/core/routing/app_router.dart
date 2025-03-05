@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:td_events_booking/features/all_events/ui/all_events_screen.dart';
 import 'package:td_events_booking/features/auth/login/ui/login_screen.dart';
 import 'package:td_events_booking/features/auth/otp/ui/otp_screen.dart';
 import 'package:td_events_booking/features/auth/register/ui/register_screen.dart';
@@ -23,6 +24,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const Layout());
       case Routes.eventDetailsScreen:
         return MaterialPageRoute(builder: (_) => const EventDetailsScreen());
+      case Routes.allEventsScreen:
+        return MaterialPageRoute(builder: (_) => const AllEventsScreen());
 
       default:
         return null;
