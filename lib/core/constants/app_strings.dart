@@ -36,4 +36,8 @@ class AppStrings {
   static String music = 'Music';
   static String filters = 'Filters';
   static String get20ForTicket = 'Get \$20 for ticket';
+  static String eventDetails = 'Event Details';
+  static String follow = 'Follow';
+  static String organizer = 'Organizer';
+  static String aboutEvent = 'About Event';
 }

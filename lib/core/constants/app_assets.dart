@@ -29,6 +29,7 @@ class AppSvgs {
   static const String explore = '${AssetsPaths.svgs}/explore.svg';
   static const String calendar = '${AssetsPaths.svgs}/calendar.svg';
   static const String location = '${AssetsPaths.svgs}/location.svg';
+  static const String location1 = '${AssetsPaths.svgs}/location1.svg';
   static const String profile = '${AssetsPaths.svgs}/profile.svg';
   static const String arrow = '${AssetsPaths.svgs}/arrow.svg';
   static const String menu = '${AssetsPaths.svgs}/menu.svg';
@@ -37,4 +38,5 @@ class AppSvgs {
   static const String filter = '${AssetsPaths.svgs}/filter.svg';
   static const String bookmark = '${AssetsPaths.svgs}/bookmark.svg';
   static const String mapPin = '${AssetsPaths.svgs}/map_pin.svg';
+  static const String date = '${AssetsPaths.svgs}/date.svg';
 }
