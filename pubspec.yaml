@@ -39,6 +39,7 @@ dependencies:
   lottie:
   smooth_page_indicator:
   pin_code_fields:
+  flutter_rating_bar:
 # Data Storage
   shared_preferences:
 # Device preview

@@ -39,4 +39,6 @@ class AppSvgs {
   static const String bookmark = '${AssetsPaths.svgs}/bookmark.svg';
   static const String mapPin = '${AssetsPaths.svgs}/map_pin.svg';
   static const String date = '${AssetsPaths.svgs}/date.svg';
+  static const String message = '${AssetsPaths.svgs}/message.svg';
+  static const String userPlus = '${AssetsPaths.svgs}/user_plus.svg';
 }

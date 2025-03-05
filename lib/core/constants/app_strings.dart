@@ -40,4 +40,11 @@ class AppStrings {
   static String follow = 'Follow';
   static String organizer = 'Organizer';
   static String aboutEvent = 'About Event';
+  static String messages = 'Messages';
+  static String following = 'Following';
+  static String followers = 'Followers';
+  static String about = 'About';
+  static String event = 'Event';
+  static String reviews = 'Reviews';
+  static String readMore = 'Read More';
 }
