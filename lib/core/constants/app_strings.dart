@@ -47,4 +47,12 @@ class AppStrings {
   static String event = 'Event';
   static String reviews = 'Reviews';
   static String readMore = 'Read More';
+  static String myProfile = 'My Profile';
+  static String calendar = 'Calendar';
+  static String bookmarks = 'Bookmarks';
+  static String helpAndFAQs = 'Help & FAQs';
+  static String singOut = 'Sign Out';
+  static String contactUs = 'Contact Us';
+  static String settings = 'Settings';
+  static String upgradePro = 'Upgrade Pro';
 }
