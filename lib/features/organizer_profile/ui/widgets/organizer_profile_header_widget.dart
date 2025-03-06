@@ -100,7 +100,10 @@ class OrganizerProfileHeaderWidget extends StatelessWidget {
                 widget: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(AppSvgs.message),
+                    SvgPicture.asset(
+                      AppSvgs.message,
+                      color: AppColors.primary,
+                    ),
                     horizontalSpace(10),
                     Text(
                       AppStrings.messages,

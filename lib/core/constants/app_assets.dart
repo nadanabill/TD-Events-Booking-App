@@ -41,4 +41,12 @@ class AppSvgs {
   static const String date = '${AssetsPaths.svgs}/date.svg';
   static const String message = '${AssetsPaths.svgs}/message.svg';
   static const String userPlus = '${AssetsPaths.svgs}/user_plus.svg';
+  static const String user = '${AssetsPaths.svgs}/user.svg';
+  static const String calendar1 = '${AssetsPaths.svgs}/calendar1.svg';
+  static const String bookmark1 = '${AssetsPaths.svgs}/bookmark1.svg';
+  static const String mail = '${AssetsPaths.svgs}/mail.svg';
+  static const String settings = '${AssetsPaths.svgs}/settings.svg';
+  static const String help = '${AssetsPaths.svgs}/help.svg';
+  static const String logout = '${AssetsPaths.svgs}/logout.svg';
+  static const String upgrade = '${AssetsPaths.svgs}/upgrade.svg';
 }
