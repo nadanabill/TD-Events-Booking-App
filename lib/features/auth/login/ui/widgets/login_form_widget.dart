@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:td_events_booking/core/constants/app_strings.dart';
+import 'package:td_events_booking/features/auth/login/logic/login_cubit.dart';
 
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/helpers/spaces.dart';
@@ -12,11 +14,8 @@ class LoginFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
     return Form(
-      key: formKey,
+      key: context.read<LoginCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,24 +23,18 @@ class LoginFormWidget extends StatelessWidget {
           Text(AppStrings.signIn, style: AppTextStyles.font24Black400),
           verticalSpace(20),
           DefaultTextFormFieldWidget(
-            controller: emailController,
+            controller: context.read<LoginCubit>().emailController,
             icon: AppImages.email,
             hintText: 'abc@mail.com',
             textInputType: TextInputType.emailAddress,
-            validator: (email) {
-              Validations.validateEmail(email);
-              return null;
-            },
+            validator: (email) => Validations.validateEmail(email),
           ),
           verticalSpace(20),
           DefaultTextFormFieldWidget(
-            controller: passwordController,
+            controller: context.read<LoginCubit>().passwordController,
             icon: AppImages.lock,
             hintText: AppStrings.yourPassword,
-            validator: (password) {
-              Validations.validatePassword(password);
-              return null;
-            },
+            validator: (password) => Validations.validatePassword(password),
             isPassword: true,
             isObscureText: true,
           ),
