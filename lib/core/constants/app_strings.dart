@@ -56,4 +56,5 @@ class AppStrings {
   static String settings = 'Settings';
   static String upgradePro = 'Upgrade Pro';
   static String youRegisteredSuccessfully = 'You Registered Successfully';
+  static String loginSuccessfully = 'Login Successfully';
 }
