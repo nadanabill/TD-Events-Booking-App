@@ -16,4 +16,18 @@ class AppColors {
   static const Color cyan = Color(0xff00F8FF);
   static const Color lightCyan = Color(0x2900F8FF);
   static const Color yellow = Color(0xffFBBE47);
+
+  static const MaterialColor themeColor =
+      MaterialColor(0xFFF27822, <int, Color>{
+    50: Color(0xFFF27822),
+    100: Color(0xFFF27822),
+    200: Color(0xFFF27822),
+    300: Color(0xFFF27822),
+    400: Color(0xFFF27822),
+    500: Color(0xFFF27822),
+    600: Color(0xFFF27822),
+    700: Color(0xFFF27822),
+    800: Color(0xFFF27822),
+    900: Color(0xFFF27822),
+  });
 }
