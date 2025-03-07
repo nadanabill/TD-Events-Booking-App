@@ -41,7 +41,7 @@ static String? validateAge(String? age) {
     if (password!.isEmpty) {
       return '🔴Password is required!';
     } else if (!AppRegExp.isPasswordValid(password)) {
-      return '🔴Password must be at least 8 characters, include an uppercase letter, number and special character';
+      return '🔴Password must be at least 8 characters,\n     include an uppercase letter, \n     lowercase letter,\n     number and special character';
     }
     return null;
   }

@@ -1,6 +1,7 @@
 class AppRegExp {
   static bool isNameValid(String name) {
-    return RegExp(r"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$").hasMatch(name);
+    return RegExp(r"^[a-zA-Z]{2,} [a-zA-Z]{2,} [a-zA-Z]{2,}( [a-zA-Z]{2,})*$")
+        .hasMatch(name);
   }
 
   static bool isEmailValid(String email) {
@@ -48,6 +49,6 @@ class AppRegExp {
   }
 
   static bool hasMinLength(String password) {
-    return password.length >= 6;
+    return password.length >= 8;
   }
 }

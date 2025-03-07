@@ -55,4 +55,5 @@ class AppStrings {
   static String contactUs = 'Contact Us';
   static String settings = 'Settings';
   static String upgradePro = 'Upgrade Pro';
+  static String youRegisteredSuccessfully = 'You Registered Successfully';
 }
