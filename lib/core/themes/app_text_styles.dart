@@ -214,4 +214,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.red,
   );
+  static TextStyle font18Red500 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: Colors.red,
+  );
 }
