@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:td_events_booking/features/all_events/ui/all_events_screen.dart';
+import 'package:td_events_booking/features/auth/login/logic/login_cubit.dart';
 import 'package:td_events_booking/features/auth/login/ui/login_screen.dart';
 import 'package:td_events_booking/features/auth/otp/ui/otp_screen.dart';
 import 'package:td_events_booking/features/auth/register/logic/register_cubit.dart';
@@ -19,7 +20,12 @@ class AppRouter {
       case Routes.onboardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (BuildContext context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          ),
+        );
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
