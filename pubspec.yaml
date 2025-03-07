@@ -27,6 +27,8 @@ dependencies:
 # Classes and helper functions that support JSON code generation.
   json_annotation:
   json_serializable:
+  freezed:
+  freezed_annotation:
 # Networking
   dio:
   retrofit:
