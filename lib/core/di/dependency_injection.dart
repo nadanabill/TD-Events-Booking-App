@@ -6,6 +6,7 @@ import 'package:td_events_booking/features/auth/register/logic/register_cubit.da
 
 import '../../features/all_events/data/api/all_events_api_service.dart';
 import '../../features/all_events/data/repo/all_events_repo.dart';
+import '../../features/all_events/logic/all_events_cubit.dart';
 import '../../features/auth/register/data/repo/register_repo.dart';
 import '../networking/dio_factory.dart';
 
@@ -30,4 +31,6 @@ Future<void> setupGetIt() async {
       () => AllEventsApiService(dio));
   getIt.registerLazySingleton<AllEventsRepo>(
       () => AllEventsRepo(getIt<AllEventsApiService>()));
+  getIt.registerLazySingleton<AllEventsCubit>(
+      () => AllEventsCubit(getIt<AllEventsRepo>()));
 }
