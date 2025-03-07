@@ -8,11 +8,12 @@ import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
 
-Future<void> setupGetIt() async {}
 Future<void> setupGetIt() async {
   Dio dio = DioFactory.getDio();
 
   // Register Feature
   getIt
       .registerLazySingleton<RegisterApiService>(() => RegisterApiService(dio));
+  getIt.registerLazySingleton<RegisterRepo>(
+      () => RegisterRepo(getIt<RegisterApiService>()));
 }
