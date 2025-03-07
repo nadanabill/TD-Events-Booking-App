@@ -7,6 +7,7 @@ import 'package:td_events_booking/core/themes/app_colors.dart';
 import 'package:td_events_booking/core/widgets/default_button_widget.dart';
 import 'package:td_events_booking/features/auth/otp/ui/widgets/otp_resend_widget.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_text_styles.dart';
 
 class OtpScreen extends StatelessWidget {
@@ -64,7 +65,9 @@ class OtpScreen extends StatelessWidget {
                       inactiveColor: AppColors.grey3,
                     ),
                     onCompleted: (value) {
-                      if (otpController.text == pin) {}
+                      if (otpController.text == pin) {
+                        Navigator.pushNamed(context, Routes.layout);
+                      }
                     },
                   ),
                   verticalSpace(20),
