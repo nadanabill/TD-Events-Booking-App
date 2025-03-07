@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:td_events_booking/features/all_events/data/models/all_events_model.dart';
+import 'package:td_events_booking/features/all_events/logic/all_events_cubit.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/helpers/spaces.dart';
@@ -8,7 +12,9 @@ import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 
 class EventsItemWidget extends StatelessWidget {
-  const EventsItemWidget({super.key});
+  final Events event;
+
+  const EventsItemWidget({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +39,10 @@ class EventsItemWidget extends StatelessWidget {
           Container(
             width: 79.w,
             height: 92.h,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage('assets/images/event_cover.png'),
+                image: NetworkImage(event.picture!),
                 fit: BoxFit.fill,
               ),
             ),
@@ -47,11 +54,13 @@ class EventsItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Wed, Apr 28 •5:30 PM',
+                  context
+                      .read<AllEventsCubit>()
+                      .eventFormattedDate(event.date!),
                   style: AppTextStyles.font13Primary400,
                 ),
                 Text(
-                  'Jo Malone London’s Mother’s Day Presents',
+                  event.title ?? 'Event Name',
                   style: AppTextStyles.font14Black400,
                 ),
                 Row(
@@ -63,7 +72,7 @@ class EventsItemWidget extends StatelessWidget {
                     horizontalSpace(4),
                     Expanded(
                       child: Text(
-                        'Radius Gallery • Santa Cruz, CA',
+                        event.address ?? 'Event Address',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font13LightGrey400,
