@@ -13,7 +13,6 @@ import 'package:td_events_booking/features/organizer_profile/ui/organizer_profil
 
 import '../../features/all_events/logic/all_events_cubit.dart';
 import '../../features/event/logic/event_details_cubit.dart';
-import '../../features/onboarding/logic/onboarding_cubit.dart';
 import '../../features/organizer_profile/logic/organizer_cubit.dart';
 import '../../features/splash/splash_screen.dart';
 import '../di/dependency_injection.dart';
@@ -26,10 +25,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.onboardingScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<OnboardingCubit>(),
-            child: const OnboardingScreen(),
-          ),
+          builder: (_) => const OnboardingScreen(),
         );
       case Routes.loginScreen:
         return MaterialPageRoute(
