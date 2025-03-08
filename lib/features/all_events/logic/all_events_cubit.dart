@@ -12,21 +12,39 @@ class AllEventsCubit extends Cubit<AllEventsState> {
 
   AllEventsCubit(this._allEventsRepo) : super(AllEventsInitial());
 
+  int currentPage = 1;
+  bool hasMorePages = true;
+  bool isLoading = false;
+
   List<Events> allEventsList = [];
 
-  void getAllEvents({required int page, required int limit}) async {
-    emit(AllEventsLoading());
+  void getAllEvents() async {
+    if (isLoading || !hasMorePages) return;
+    isLoading = true;
+    if (currentPage == 1) {
+      emit(AllEventsLoading());
+    }
+    if (hasMorePages) {
+      final response = await _allEventsRepo.getAllEvents(
+        page: currentPage,
+        limit: 5,
+      );
+      response.when(success: (allEventsModel) {
+        final newEvents = allEventsModel.data.events ?? [];
 
-    final response = await _allEventsRepo.getAllEvents(
-      page: 1,
-      limit: 10,
-    );
-    response.when(success: (allEventsModel) {
-      allEventsList.addAll(allEventsModel.data.events ?? []);
-      emit(AllEventsSuccess());
-    }, failure: (error) {
-      emit(AllEventsFailure(error));
-    });
+        if (newEvents.isNotEmpty) {
+          allEventsList.addAll(newEvents);
+          currentPage++;
+        }
+        hasMorePages = currentPage < allEventsModel.data.totalPages!;
+        isLoading = false;
+
+        emit(AllEventsSuccess());
+      }, failure: (error) {
+        isLoading = false;
+        emit(AllEventsFailure(error));
+      });
+    }
   }
 
   String eventFormattedDate(date) {

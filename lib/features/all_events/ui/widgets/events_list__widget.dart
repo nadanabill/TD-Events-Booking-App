@@ -5,20 +5,65 @@ import 'package:td_events_booking/features/all_events/ui/widgets/events_item_wid
 
 import '../../../../core/helpers/spaces.dart';
 
-class EventListWidget extends StatelessWidget {
+class EventListWidget extends StatefulWidget {
   const EventListWidget({super.key});
 
   @override
+  State<EventListWidget> createState() => _EventListWidgetState();
+}
+
+class _EventListWidgetState extends State<EventListWidget> {
+  final ScrollController _scrollController = ScrollController();
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels >=
+            _scrollController.position.maxScrollExtent - 100 &&
+        context.read<AllEventsCubit>().hasMorePages) {
+      context.read<AllEventsCubit>().getAllEvents();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: ListView.separated(
-        itemBuilder: (context, index) => EventsItemWidget(
-          event: context.read<AllEventsCubit>().allEventsList[index],
-        ),
-        separatorBuilder: (context, index) => verticalSpace(15),
-        itemCount: context.read<AllEventsCubit>().allEventsList.length,
-      ),
+    return BlocBuilder<AllEventsCubit, AllEventsState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ListView.separated(
+            controller: _scrollController,
+            itemBuilder: (context, index) {
+              if (index ==
+                      context.read<AllEventsCubit>().allEventsList.length &&
+                  context.read<AllEventsCubit>().hasMorePages) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              // if (index ==
+              //         context.read<AllEventsCubit>().allEventsList.length &&
+              //     !context.read<AllEventsCubit>().hasMorePages) {
+              //   return SizedBox();
+              // }
+              return EventsItemWidget(
+                event: context.read<AllEventsCubit>().allEventsList[index],
+              );
+            },
+            separatorBuilder: (context, index) => verticalSpace(15),
+            itemCount: context.read<AllEventsCubit>().allEventsList.length +
+                (context.read<AllEventsCubit>().hasMorePages ? 1 : 0),
+          ),
+        );
+      },
     );
   }
 }
