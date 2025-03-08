@@ -11,6 +11,7 @@ import '../../features/auth/register/data/repo/register_repo.dart';
 import '../../features/event/data/api/event_details_api_service.dart';
 import '../../features/event/data/repo/event_details_repo.dart';
 import '../../features/event/logic/event_details_cubit.dart';
+import '../../features/organizer_profile/data/api/organizer_api_service.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
@@ -44,4 +45,8 @@ Future<void> setupGetIt() async {
       () => EventDetailsRepo(getIt<EventDetailsApiService>()));
   getIt.registerLazySingleton<EventDetailsCubit>(
       () => EventDetailsCubit(getIt<EventDetailsRepo>()));
+
+  // organizer profile Feature
+  getIt.registerLazySingleton<OrganizerApiService>(
+      () => OrganizerApiService(dio));
 }
