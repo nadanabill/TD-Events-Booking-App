@@ -22,6 +22,7 @@ class ErrorTextWidget extends StatelessWidget {
           verticalSpace(10),
           Text(
             error,
+            textAlign: TextAlign.center,
             style: AppTextStyles.font18Red500,
           ),
         ],

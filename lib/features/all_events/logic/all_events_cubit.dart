@@ -34,4 +34,16 @@ class AllEventsCubit extends Cubit<AllEventsState> {
 
     return DateFormat("EEE, MMM d • h:mm a").format(dateTime);
   }
+
+  String getEventDay(date) {
+    DateTime dateTime = DateTime.parse(date);
+
+    return DateFormat("dd").format(dateTime);
+  }
+
+  String getEventMonth(date) {
+    DateTime dateTime = DateTime.parse(date);
+
+    return DateFormat("MMM").format(dateTime);
+  }
 }

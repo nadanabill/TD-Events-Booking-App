@@ -9,7 +9,9 @@ import '../../../../core/themes/app_text_styles.dart';
 class TextRowWidget extends StatelessWidget {
   final String text;
 
-  const TextRowWidget({super.key, required this.text});
+  final Function() onPressed;
+
+  const TextRowWidget({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class TextRowWidget extends StatelessWidget {
             style: AppTextStyles.font18Black500,
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: onPressed,
             child: Row(
               children: [
                 Text(

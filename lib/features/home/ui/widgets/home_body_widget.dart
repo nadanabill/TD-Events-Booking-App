@@ -33,10 +33,12 @@ class HomeBodyWidget extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          TextRowWidget(text: AppStrings.upcomingEvents),
           const EventsListWidget(),
           const InviteCardWidget(),
-          TextRowWidget(text: AppStrings.nearbyEvents),
+          TextRowWidget(
+            text: AppStrings.nearbyEvents,
+            onPressed: () {},
+          ),
         ],
       ),
     );
