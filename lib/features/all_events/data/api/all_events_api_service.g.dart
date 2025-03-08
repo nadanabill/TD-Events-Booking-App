@@ -42,7 +42,7 @@ class _AllEventsApiService implements AllEventsApiService {
     )
         .compose(
           _dio.options,
-          'api/events',
+          'events',
           queryParameters: queryParameters,
           data: _data,
         )
