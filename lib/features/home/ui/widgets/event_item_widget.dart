@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:td_events_booking/core/constants/app_assets.dart';
 import 'package:td_events_booking/core/helpers/spaces.dart';
+import 'package:td_events_booking/features/all_events/data/models/all_events_model.dart';
 
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
+import '../../../all_events/logic/all_events_cubit.dart';
 
 class EventItemWidget extends StatelessWidget {
-  const EventItemWidget({super.key});
+  final Events event;
+
+  const EventItemWidget({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +33,19 @@ class EventItemWidget extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Stack(
             children: [
-              Image.asset(
-                'assets/images/event_cover.png',
-                height: 131.h,
-              ),
+              Container(
+                  height: 131.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: NetworkImage(event.picture!),
+                      fit: BoxFit.cover,
+                    ),
+                  )),
               Positioned(
                 left: 8,
                 top: 8,
@@ -52,11 +63,14 @@ class EventItemWidget extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: '10',
+                          text: context
+                              .read<AllEventsCubit>()
+                              .getEventDay(event.date!),
                           style: AppTextStyles.font18Red700,
                         ),
                         TextSpan(
-                          text: '\nJUNE',
+                          text:
+                              '\n${context.read<AllEventsCubit>().getEventMonth(event.date!)}',
                           style: AppTextStyles.font10Red400,
                         ),
                       ],
@@ -67,22 +81,25 @@ class EventItemWidget extends StatelessWidget {
               Positioned(
                 right: 8,
                 top: 8,
-                child: Container(
-                  height: 30.h,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppColors.white.withOpacity(0.7),
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 30.h,
+                    width: 30.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppColors.white.withOpacity(0.7),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: SvgPicture.asset(AppSvgs.bookmark1),
                   ),
-                  padding: const EdgeInsets.all(8),
-                  child: SvgPicture.asset(AppSvgs.bookmark),
                 ),
               ),
             ],
           ),
           verticalSpace(10),
           Text(
-            "International Band Music Festival",
+            event.title!,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: AppTextStyles.font18Black500,
@@ -125,7 +142,7 @@ class EventItemWidget extends StatelessWidget {
               ),
               horizontalSpace(10),
               Text(
-                "+20 Going",
+                "+${event.numberOfGoing} Going",
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.font12Primary500,
@@ -138,7 +155,7 @@ class EventItemWidget extends StatelessWidget {
               SvgPicture.asset(AppSvgs.mapPin),
               horizontalSpace(5),
               Text(
-                "36 Guild Street London, UK ",
+                event.address!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.font13Grey4400,
