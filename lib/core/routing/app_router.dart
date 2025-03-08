@@ -13,6 +13,7 @@ import 'package:td_events_booking/features/organizer_profile/ui/organizer_profil
 
 import '../../features/all_events/logic/all_events_cubit.dart';
 import '../../features/event/logic/event_details_cubit.dart';
+import '../../features/organizer_profile/logic/organizer_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 
@@ -56,13 +57,20 @@ class AppRouter {
         );
       case Routes.allEventsScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider.value(
-                  value: getIt<AllEventsCubit>(),
-                  child: const AllEventsScreen(),
-                ));
+          builder: (_) => BlocProvider.value(
+            value: getIt<AllEventsCubit>(),
+            child: const AllEventsScreen(),
+          ),
+        );
       case Routes.organizerProfileScreen:
+        final organizerId = settings.arguments as int;
         return MaterialPageRoute(
-            builder: (_) => const OrganizerProfileScreen());
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<OrganizerCubit>()..getOrganizer(organizerId: organizerId),
+            child: const OrganizerProfileScreen(),
+          ),
+        );
 
       default:
         return null;
