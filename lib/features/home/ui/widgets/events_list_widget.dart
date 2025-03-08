@@ -23,12 +23,10 @@ class EventsListWidget extends StatelessWidget {
             text: AppStrings.upcomingEvents,
             onPressed: () {
               if (state is AllEventsFailure) {
-                context.read<AllEventsCubit>().getAllEvents(
-                      page: 1,
-                      limit: 10,
-                    );
+                context.read<AllEventsCubit>().getAllEvents();
               }
-              Navigator.pushNamed(context, Routes.allEventsScreen);
+              Navigator.pushNamed(context, Routes.allEventsScreen,
+                  arguments: context);
             },
           ),
           SizedBox(
