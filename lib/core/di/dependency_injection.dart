@@ -40,4 +40,6 @@ Future<void> setupGetIt() async {
   // event details Feature
   getIt.registerLazySingleton<EventDetailsApiService>(
       () => EventDetailsApiService(dio));
+  getIt.registerLazySingleton<EventDetailsRepo>(
+      () => EventDetailsRepo(getIt<EventDetailsApiService>()));
 }
