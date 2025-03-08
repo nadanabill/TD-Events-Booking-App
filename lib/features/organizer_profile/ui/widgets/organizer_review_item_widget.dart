@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:td_events_booking/features/organizer_profile/data/models/organizer_model.dart';
 
+import '../../../../core/constants/app_assets.dart';
 import '../../../../core/helpers/spaces.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
+import '../../logic/organizer_cubit.dart';
 
 class OrganizerReviewItemWidget extends StatelessWidget {
-  const OrganizerReviewItemWidget({super.key});
+  final OrganizerReviews review;
+
+  const OrganizerReviewItemWidget({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +25,12 @@ class OrganizerReviewItemWidget extends StatelessWidget {
           Container(
             width: 34,
             height: 34,
-            decoration: const ShapeDecoration(
+            decoration: ShapeDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/profile1.png'),
+                image: NetworkImage(review.reviewerPicture ?? AppImages.user),
                 fit: BoxFit.fill,
               ),
-              shape: OvalBorder(),
+              shape: const OvalBorder(),
             ),
           ),
           horizontalSpace(16),
@@ -33,18 +39,18 @@ class OrganizerReviewItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Rocks Velkeinjen',
+                  review.reviewerName ?? '',
                   style: AppTextStyles.font18Black500,
                 ),
                 verticalSpace(5),
                 RatingBar.builder(
-                  initialRating: 5,
+                  initialRating: review.rate!.toDouble(),
                   minRating: 1,
                   direction: Axis.horizontal,
                   allowHalfRating: true,
                   ignoreGestures: true,
                   itemCount: 5,
-                  unratedColor: AppColors.white.withOpacity(0.7),
+                  unratedColor: AppColors.grey2.withOpacity(0.7),
                   itemBuilder: (context, _) => const Icon(
                     Icons.star_rounded,
                     color: AppColors.yellow,
@@ -56,14 +62,16 @@ class OrganizerReviewItemWidget extends StatelessWidget {
                 ),
                 verticalSpace(5),
                 Text(
-                  'Cinemas is the ultimate experience to see new movies in Gold Class or Vmax. Find a cinema near you.',
+                  review.review ?? '',
                   style: AppTextStyles.font15Black400,
                 ),
               ],
             ),
           ),
           Text(
-            '10 Feb',
+            context.read<OrganizerCubit>().formatDate(
+                  review.reviewDate!,
+                ),
             textAlign: TextAlign.right,
             style: AppTextStyles.font15Grey3400,
           ),

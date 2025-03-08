@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:td_events_booking/core/constants/app_strings.dart';
+import 'package:td_events_booking/features/organizer_profile/data/models/organizer_model.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/helpers/spaces.dart';
@@ -10,7 +11,9 @@ import '../../../../core/themes/app_text_styles.dart';
 import '../../../../core/widgets/default_button_widget.dart';
 
 class OrganizerProfileHeaderWidget extends StatelessWidget {
-  const OrganizerProfileHeaderWidget({super.key});
+  final OrganizerData organizer;
+
+  const OrganizerProfileHeaderWidget({super.key, required this.organizer});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +21,11 @@ class OrganizerProfileHeaderWidget extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 50.r,
-          backgroundImage: const AssetImage('assets/images/profile1.png'),
+          backgroundImage: NetworkImage(organizer.picture ?? AppImages.user),
         ),
         verticalSpace(20),
         Text(
-          'David  Silbia',
+          organizer.name ?? '',
           textAlign: TextAlign.center,
           style: AppTextStyles.font24Black500,
         ),
@@ -33,7 +36,7 @@ class OrganizerProfileHeaderWidget extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  '350',
+                  organizer.numberOfFollowing.toString(),
                   style: AppTextStyles.font16Black500,
                 ),
                 Text(
@@ -52,7 +55,7 @@ class OrganizerProfileHeaderWidget extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  '346',
+                  organizer.numberOfFollowers.toString(),
                   style: AppTextStyles.font16Black500,
                 ),
                 Text(

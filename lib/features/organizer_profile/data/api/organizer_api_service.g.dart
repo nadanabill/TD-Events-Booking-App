@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'all_events_api_service.dart';
+part of 'organizer_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'all_events_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _AllEventsApiService implements AllEventsApiService {
-  _AllEventsApiService(
+class _OrganizerApiService implements OrganizerApiService {
+  _OrganizerApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -24,25 +24,19 @@ class _AllEventsApiService implements AllEventsApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<AllEventsModel> getAllEvents(
-    int page,
-    int limit,
-  ) async {
+  Future<OrganizerModel> getOrganizer(int organizerId) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'limit': limit,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<AllEventsModel>(Options(
+    final _options = _setStreamType<OrganizerModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'events',
+          'organizers/${organizerId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -52,9 +46,9 @@ class _AllEventsApiService implements AllEventsApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late AllEventsModel _value;
+    late OrganizerModel _value;
     try {
-      _value = AllEventsModel.fromJson(_result.data!);
+      _value = OrganizerModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

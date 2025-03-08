@@ -11,6 +11,9 @@ import '../../features/auth/register/data/repo/register_repo.dart';
 import '../../features/event/data/api/event_details_api_service.dart';
 import '../../features/event/data/repo/event_details_repo.dart';
 import '../../features/event/logic/event_details_cubit.dart';
+import '../../features/organizer_profile/data/api/organizer_api_service.dart';
+import '../../features/organizer_profile/data/repo/organizer_repo.dart';
+import '../../features/organizer_profile/logic/organizer_cubit.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
@@ -23,18 +26,18 @@ Future<void> setupGetIt() async {
       .registerLazySingleton<RegisterApiService>(() => RegisterApiService(dio));
   getIt.registerLazySingleton<RegisterRepo>(
       () => RegisterRepo(getIt<RegisterApiService>()));
-  getIt.registerLazySingleton<RegisterCubit>(
+  getIt.registerFactory<RegisterCubit>(
       () => RegisterCubit(getIt<RegisterRepo>()));
 
   // login Feature
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit());
+  getIt.registerFactory<LoginCubit>(() => LoginCubit());
 
   // all events Feature
   getIt.registerLazySingleton<AllEventsApiService>(
       () => AllEventsApiService(dio));
   getIt.registerLazySingleton<AllEventsRepo>(
       () => AllEventsRepo(getIt<AllEventsApiService>()));
-  getIt.registerLazySingleton<AllEventsCubit>(
+  getIt.registerFactory<AllEventsCubit>(
       () => AllEventsCubit(getIt<AllEventsRepo>()));
 
   // event details Feature
@@ -42,6 +45,14 @@ Future<void> setupGetIt() async {
       () => EventDetailsApiService(dio));
   getIt.registerLazySingleton<EventDetailsRepo>(
       () => EventDetailsRepo(getIt<EventDetailsApiService>()));
-  getIt.registerLazySingleton<EventDetailsCubit>(
+  getIt.registerFactory<EventDetailsCubit>(
       () => EventDetailsCubit(getIt<EventDetailsRepo>()));
+
+  // organizer profile Feature
+  getIt.registerLazySingleton<OrganizerApiService>(
+      () => OrganizerApiService(dio));
+  getIt.registerLazySingleton<OrganizersRepo>(
+      () => OrganizersRepo(getIt<OrganizerApiService>()));
+  getIt.registerFactory<OrganizerCubit>(
+      () => OrganizerCubit(getIt<OrganizersRepo>()));
 }

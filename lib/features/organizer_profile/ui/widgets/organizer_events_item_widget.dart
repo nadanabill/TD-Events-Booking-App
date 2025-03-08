@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:td_events_booking/features/organizer_profile/data/models/organizer_model.dart';
+import 'package:td_events_booking/features/organizer_profile/logic/organizer_cubit.dart';
 
 import '../../../../core/helpers/spaces.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 
 class OrganizerEventsItemWidget extends StatelessWidget {
-  const OrganizerEventsItemWidget({super.key});
+  final OrganizerEvents event;
+
+  const OrganizerEventsItemWidget({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +41,10 @@ class OrganizerEventsItemWidget extends StatelessWidget {
           Container(
             width: 79.w,
             height: 92.h,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage('assets/images/event_cover.png'),
+                image: NetworkImage(event.picture!),
                 fit: BoxFit.fill,
               ),
             ),
@@ -50,11 +56,13 @@ class OrganizerEventsItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '1st  May- Sat -2:00 PM',
+                  context.read<OrganizerCubit>().formatCustomDate(
+                        event.date!,
+                      ),
                   style: AppTextStyles.font13Primary400,
                 ),
                 Text(
-                  'Jo Malone London’s Mother’s Day Presents',
+                  event.title ?? '',
                   style: AppTextStyles.font18Black500,
                 ),
               ],

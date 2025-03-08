@@ -36,7 +36,7 @@ class _EventDetailsApiService implements EventDetailsApiService {
     )
         .compose(
           _dio.options,
-          'api/events/${eventId}',
+          'events/${eventId}',
           queryParameters: queryParameters,
           data: _data,
         )
