@@ -25,7 +25,7 @@ class App extends StatelessWidget {
             title: AppStrings.appName,
             debugShowCheckedModeBanner: false,
             theme: appTheme(),
-            initialRoute: Routes.onboardingScreen,
+            initialRoute: Routes.splashScreen,
             onGenerateRoute: appRouter.generateRoute,
           );
         });

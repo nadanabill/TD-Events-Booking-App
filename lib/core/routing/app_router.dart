@@ -13,15 +13,24 @@ import 'package:td_events_booking/features/organizer_profile/ui/organizer_profil
 
 import '../../features/all_events/logic/all_events_cubit.dart';
 import '../../features/event/logic/event_details_cubit.dart';
+import '../../features/onboarding/logic/onboarding_cubit.dart';
 import '../../features/organizer_profile/logic/organizer_cubit.dart';
+import '../../features/splash/splash_screen.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.splashScreen:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.onboardingScreen:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<OnboardingCubit>(),
+            child: const OnboardingScreen(),
+          ),
+        );
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -41,8 +50,7 @@ class AppRouter {
       case Routes.layout:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) =>
-                getIt<AllEventsCubit>()..getAllEvents(page: 1, limit: 5),
+            create: (context) => getIt<AllEventsCubit>()..getAllEvents(),
             child: const Layout(),
           ),
         );
@@ -56,9 +64,10 @@ class AppRouter {
           ),
         );
       case Routes.allEventsScreen:
+        final ctx = settings.arguments as BuildContext;
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: getIt<AllEventsCubit>(),
+            value: BlocProvider.of<AllEventsCubit>(ctx),
             child: const AllEventsScreen(),
           ),
         );
