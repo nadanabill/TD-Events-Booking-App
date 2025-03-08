@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:td_events_booking/core/widgets/error_widget.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/helpers/spaces.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
+import '../../logic/organizer_cubit.dart';
 import 'organizer_profile_header_widget.dart';
 import 'organizer_tap_view_widget.dart';
 
@@ -27,38 +30,51 @@ class _OrganizerProfileBodyWidgetState extends State<OrganizerProfileBodyWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
+    return BlocBuilder<OrganizerCubit, OrganizerState>(
+      builder: (context, state) {
+        if (state is OrganizerSuccess) {
+          return Column(
             children: [
-              const OrganizerProfileHeaderWidget(),
-              verticalSpace(20),
-              TabBar(
-                dividerColor: AppColors.white,
-                unselectedLabelStyle: AppTextStyles.font16LightGrey400,
-                labelStyle: AppTextStyles.font16Primary400,
-                controller: tabController,
-                labelColor: AppColors.primary,
-                unselectedLabelColor: AppColors.grey3,
-                indicatorColor: AppColors.primary,
-                tabs: [
-                  Tab(text: AppStrings.about.toUpperCase()),
-                  Tab(text: AppStrings.events.toUpperCase()),
-                  Tab(text: AppStrings.reviews.toUpperCase()),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  children: [
+                    OrganizerProfileHeaderWidget(
+                      organizer: state.organizer.data!,
+                    ),
+                    verticalSpace(20),
+                    TabBar(
+                      dividerColor: AppColors.white,
+                      unselectedLabelStyle: AppTextStyles.font16LightGrey400,
+                      labelStyle: AppTextStyles.font16Primary400,
+                      controller: tabController,
+                      labelColor: AppColors.primary,
+                      unselectedLabelColor: AppColors.grey3,
+                      indicatorColor: AppColors.primary,
+                      tabs: [
+                        Tab(text: AppStrings.about.toUpperCase()),
+                        Tab(text: AppStrings.events.toUpperCase()),
+                        Tab(text: AppStrings.reviews.toUpperCase()),
+                      ],
+                    ),
+                    verticalSpace(20),
+                  ],
+                ),
               ),
-              verticalSpace(20),
+              Expanded(
+                child: OrganizerTapViewWidget(
+                  tabController: tabController,
+                  organizer: state.organizer.data!,
+                ),
+              ),
             ],
-          ),
-        ),
-        Expanded(
-          child: OrganizerTapViewWidget(
-            tabController: tabController,
-          ),
-        ),
-      ],
+          );
+        }
+        if (state is OrganizerFailure) {
+          return ErrorTextWidget(error: state.error);
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
