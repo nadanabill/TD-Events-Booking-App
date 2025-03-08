@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:td_events_booking/features/event/data/models/event_details_model.dart';
+import 'package:td_events_booking/features/event/logic/event_details_cubit.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_strings.dart';
@@ -9,7 +12,9 @@ import '../../../../core/themes/app_text_styles.dart';
 import 'details_row_widget.dart';
 
 class EventDetailsBodyWidget extends StatelessWidget {
-  const EventDetailsBodyWidget({super.key});
+  final EventData event;
+
+  const EventDetailsBodyWidget({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +24,22 @@ class EventDetailsBodyWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'International Band Music Concert',
+            event.title ?? '',
             style: AppTextStyles.font35Black400,
           ),
           verticalSpace(18),
-          const DetailsRowWidget(
-            title: '14 December, 2021',
-            subtitle: 'Tuesday, 4:00PM - 9:00PM',
+          DetailsRowWidget(
+            title: context
+                .read<EventDetailsCubit>()
+                .eventFormattedDate(event.date),
+            subtitle:
+                context.read<EventDetailsCubit>().getEventDate(event.date),
             icon: AppSvgs.date,
           ),
           verticalSpace(15),
-          const DetailsRowWidget(
-            title: 'Gala Convention Center',
+          //todo
+          DetailsRowWidget(
+            title: event.address ?? '',
             subtitle: '36 Guild Street London, UK ',
             icon: AppSvgs.location1,
           ),
@@ -42,8 +51,10 @@ class EventDetailsBodyWidget extends StatelessWidget {
                 height: 44,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/images/event_cover.png'),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      event.organizer!.picture ?? AppImages.user,
+                    ),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -53,7 +64,7 @@ class EventDetailsBodyWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Ashfak Sayem',
+                    event.organizer!.name ?? '',
                     style: AppTextStyles.font15Black400,
                   ),
                   Text(
@@ -88,7 +99,7 @@ class EventDetailsBodyWidget extends StatelessWidget {
           ),
           verticalSpace(8),
           Text(
-            'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More...',
+            event.aboutEvent ?? '',
             style: AppTextStyles.font16Black400,
           ),
         ],
