@@ -30,19 +30,26 @@ class AppRouter {
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-              create: (BuildContext context) => getIt<RegisterCubit>(),
-              child: const RegisterScreen()),
+            create: (BuildContext context) => getIt<RegisterCubit>(),
+            child: const RegisterScreen(),
+          ),
         );
       case Routes.otpScreen:
         return MaterialPageRoute(builder: (_) => const OtpScreen());
       case Routes.layout:
-        return MaterialPageRoute(builder: (_) => const Layout());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<AllEventsCubit>()..getAllEvents(page: 1, limit: 5),
+            child: const Layout(),
+          ),
+        );
       case Routes.eventDetailsScreen:
         return MaterialPageRoute(builder: (_) => const EventDetailsScreen());
       case Routes.allEventsScreen:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => getIt<AllEventsCubit>()..getAllEvents(page: 1, limit: 5),
+            builder: (_) => BlocProvider.value(
+                  value: getIt<AllEventsCubit>(),
                   child: const AllEventsScreen(),
                 ));
       case Routes.organizerProfileScreen:
