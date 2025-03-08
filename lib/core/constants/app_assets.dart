@@ -18,6 +18,7 @@ class AppImages {
   static const String buttonArrow = '${AssetsPaths.images}/button_arrow.png';
   static const String profile = '${AssetsPaths.images}/profile.png';
   static const String prize = '${AssetsPaths.images}/prize.png';
+  static const String user = 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small_2x/default-avatar-icon-of-social-media-user-vector.jpg';
 }
 
 class AppIcons {}

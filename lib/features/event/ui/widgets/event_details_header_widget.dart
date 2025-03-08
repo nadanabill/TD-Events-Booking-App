@@ -28,7 +28,7 @@ class EventDetailsHeaderWidget extends StatelessWidget {
                 height: 240,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(eventImage),
+                    image: NetworkImage(eventImage),
                     fit: BoxFit.fill,
                   ),
                 ),
