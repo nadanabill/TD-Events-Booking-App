@@ -20,9 +20,13 @@ class AllEventsModel {
 
 @JsonSerializable()
 class Data {
+  @JsonKey(name: 'current_page')
   int? currentPage;
+  @JsonKey(name: 'page_size')
   int? pageSize;
+  @JsonKey(name: 'total_items')
   int? totalItems;
+  @JsonKey(name: 'total_pages')
   int? totalPages;
   List<Events>? events;
 
@@ -39,11 +43,13 @@ class Data {
 
 @JsonSerializable()
 class Events {
+  @JsonKey(name: 'event_id')
   int? eventId;
   String? picture;
   String? date;
   String? title;
   String? address;
+  @JsonKey(name: 'number_of_going')
   int? numberOfGoing;
   Organizer? organizer;
 
