@@ -26,18 +26,18 @@ Future<void> setupGetIt() async {
       .registerLazySingleton<RegisterApiService>(() => RegisterApiService(dio));
   getIt.registerLazySingleton<RegisterRepo>(
       () => RegisterRepo(getIt<RegisterApiService>()));
-  getIt.registerLazySingleton<RegisterCubit>(
+  getIt.registerFactory<RegisterCubit>(
       () => RegisterCubit(getIt<RegisterRepo>()));
 
   // login Feature
-  getIt.registerLazySingleton<LoginCubit>(() => LoginCubit());
+  getIt.registerFactory<LoginCubit>(() => LoginCubit());
 
   // all events Feature
   getIt.registerLazySingleton<AllEventsApiService>(
       () => AllEventsApiService(dio));
   getIt.registerLazySingleton<AllEventsRepo>(
       () => AllEventsRepo(getIt<AllEventsApiService>()));
-  getIt.registerLazySingleton<AllEventsCubit>(
+  getIt.registerFactory<AllEventsCubit>(
       () => AllEventsCubit(getIt<AllEventsRepo>()));
 
   // event details Feature
@@ -45,7 +45,7 @@ Future<void> setupGetIt() async {
       () => EventDetailsApiService(dio));
   getIt.registerLazySingleton<EventDetailsRepo>(
       () => EventDetailsRepo(getIt<EventDetailsApiService>()));
-  getIt.registerLazySingleton<EventDetailsCubit>(
+  getIt.registerFactory<EventDetailsCubit>(
       () => EventDetailsCubit(getIt<EventDetailsRepo>()));
 
   // organizer profile Feature
