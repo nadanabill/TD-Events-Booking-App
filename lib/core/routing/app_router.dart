@@ -11,6 +11,7 @@ import 'package:td_events_booking/features/home/ui/layout.dart';
 import 'package:td_events_booking/features/onboarding/ui/onboarding_screen.dart';
 import 'package:td_events_booking/features/organizer_profile/ui/organizer_profile_screen.dart';
 
+import '../../features/all_events/logic/all_events_cubit.dart';
 import '../di/dependency_injection.dart';
 import 'routes.dart';
 
@@ -39,7 +40,11 @@ class AppRouter {
       case Routes.eventDetailsScreen:
         return MaterialPageRoute(builder: (_) => const EventDetailsScreen());
       case Routes.allEventsScreen:
-        return MaterialPageRoute(builder: (_) => const AllEventsScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<AllEventsCubit>()..getAllEvents(page: 1, limit: 5),
+                  child: const AllEventsScreen(),
+                ));
       case Routes.organizerProfileScreen:
         return MaterialPageRoute(
             builder: (_) => const OrganizerProfileScreen());

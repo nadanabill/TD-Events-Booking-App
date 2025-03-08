@@ -15,7 +15,7 @@ RegisterResponseModel _$RegisterResponseModelFromJson(
     );
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
-      userId: json['userId'] as String?,
-      name: json['name'] as String?,
-      email: json['email'] as String?,
+      userId: json['userId'] as String,
+      name: json['name'] as String,
+      email: json['email'] as String,
     );

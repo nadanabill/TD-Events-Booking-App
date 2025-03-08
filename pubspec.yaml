@@ -47,6 +47,8 @@ dependencies:
   shared_preferences:
 # Device preview
   device_preview:
+# Date Time
+  intl:
   flutter_lints: ^4.0.0
 
 flutter:

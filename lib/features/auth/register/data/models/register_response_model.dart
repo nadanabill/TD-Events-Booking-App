@@ -20,14 +20,14 @@ class RegisterResponseModel {
 
 @JsonSerializable()
 class User {
-  String? userId;
-  String? name;
-  String? email;
+  final String userId;
+  final String name;
+  final String email;
 
   User({
-    this.userId,
-    this.name,
-    this.email,
+    required this.userId,
+    required this.name,
+    required this.email,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

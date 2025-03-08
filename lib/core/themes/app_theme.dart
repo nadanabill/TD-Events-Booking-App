@@ -4,7 +4,11 @@ import 'package:flutter/services.dart';
 import 'app_colors.dart';
 
 ThemeData appTheme() => ThemeData(
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: AppColors.primary,
+      ),
       primaryColor: AppColors.primary,
+      primarySwatch: AppColors.themeColor,
       appBarTheme: const AppBarTheme(
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
