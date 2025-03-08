@@ -8,6 +8,7 @@ import '../../features/all_events/data/api/all_events_api_service.dart';
 import '../../features/all_events/data/repo/all_events_repo.dart';
 import '../../features/all_events/logic/all_events_cubit.dart';
 import '../../features/auth/register/data/repo/register_repo.dart';
+import '../../features/event/data/api/event_details_api_service.dart';
 import '../networking/dio_factory.dart';
 
 final getIt = GetIt.instance;
