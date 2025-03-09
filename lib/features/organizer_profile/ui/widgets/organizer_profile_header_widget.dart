@@ -91,7 +91,7 @@ class OrganizerProfileHeaderWidget extends StatelessWidget {
                 onPressed: () {},
               ),
             ),
-            horizontalSpace(17),
+            horizontalSpace(10),
             Expanded(
               child: DefaultButtonWidget(
                 color: AppColors.white,
