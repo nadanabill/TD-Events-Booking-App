@@ -20,7 +20,7 @@ class RegisterFormWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           verticalSpace(20),
-          Text(AppStrings.signUp, style: AppTextStyles.font24Black400),
+          Text(AppStrings.signUp, style: AppTextStyles.font24Black500),
           verticalSpace(20),
           DefaultTextFormFieldWidget(
             controller: context.read<RegisterCubit>().nameController,
