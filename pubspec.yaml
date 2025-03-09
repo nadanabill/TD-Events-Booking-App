@@ -52,7 +52,9 @@ dependencies:
 # social share
   share_plus:
   path_provider:
-
+# local notification
+  flutter_local_notifications:
+  timezone:
   flutter_lints: ^4.0.0
 
 flutter:

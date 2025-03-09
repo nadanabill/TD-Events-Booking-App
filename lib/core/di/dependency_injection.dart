@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:td_events_booking/core/connection_cubit/internet__cubit.dart';
 import 'package:td_events_booking/core/helpers/share_service.dart';
 import 'package:td_events_booking/features/auth/login/logic/login_cubit.dart';
 import 'package:td_events_booking/features/auth/register/data/api/register_api_service.dart';
@@ -22,6 +23,9 @@ final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   Dio dio = DioFactory.getDio();
+
+  // Connection
+  getIt.registerFactory<InternetCubit>(() => InternetCubit());
 
   // Register Feature
   getIt
