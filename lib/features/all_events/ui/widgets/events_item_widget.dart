@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:td_events_booking/core/di/dependency_injection.dart';
+import 'package:td_events_booking/core/helpers/share_service.dart';
 import 'package:td_events_booking/features/all_events/logic/all_events_cubit.dart';
 
 import '../../../../core/constants/app_assets.dart';
@@ -24,6 +26,9 @@ class EventsItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onLongPress: (){
+       getIt<ShareService>().shareEvent(event);
+      },
       onTap: () {
         Navigator.pushNamed(
           context,

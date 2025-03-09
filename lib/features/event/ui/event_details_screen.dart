@@ -5,6 +5,8 @@ import 'package:td_events_booking/core/widgets/error_widget.dart';
 import 'package:td_events_booking/features/event/ui/widgets/event_details_body_widget.dart';
 import 'package:td_events_booking/features/event/ui/widgets/event_details_header_widget.dart';
 
+import '../../../core/di/dependency_injection.dart';
+import '../../../core/helpers/share_service.dart';
 import '../logic/event_details_cubit.dart';
 
 class EventDetailsScreen extends StatelessWidget {
@@ -17,19 +19,24 @@ class EventDetailsScreen extends StatelessWidget {
         if (state is EventDetailsSuccess) {
           final event = state.event.data;
           return Scaffold(
-            body: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: EventDetailsHeaderWidget(
-                    event: event!,
+            body: InkWell(
+              onLongPress: () {
+                getIt<ShareService>().shareEvent(event);
+              },
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: EventDetailsHeaderWidget(
+                      event: event!,
+                    ),
                   ),
-                ),
-                SliverToBoxAdapter(
-                  child: EventDetailsBodyWidget(
-                    event: event,
+                  SliverToBoxAdapter(
+                    child: EventDetailsBodyWidget(
+                      event: event,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             bottomNavigationBar: Container(
               margin: const EdgeInsets.only(bottom: 20, right: 20, left: 20),

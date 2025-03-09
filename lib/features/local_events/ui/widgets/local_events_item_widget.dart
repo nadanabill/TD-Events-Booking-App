@@ -6,11 +6,13 @@ import 'package:td_events_booking/features/all_events/logic/all_events_cubit.dar
 import 'package:td_events_booking/features/local_events/logic/local_events_cubit.dart';
 
 import '../../../../core/constants/app_assets.dart';
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/helpers/spaces.dart';
 import '../../../../core/models/event_model.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
+import '../../../../core/helpers/share_service.dart';
 
 class LocalEventsItemWidget extends StatelessWidget {
   final Event event;
@@ -25,6 +27,9 @@ class LocalEventsItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onLongPress: (){
+        getIt<ShareService>().shareEvent(event);
+      },
       onTap: () {
         Navigator.pushNamed(
           context,
