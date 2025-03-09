@@ -45,63 +45,66 @@ class EventDetailsBodyWidget extends StatelessWidget {
             icon: AppSvgs.location1,
           ),
           verticalSpace(24),
-          //todo
-          InkWell(
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                Routes.organizerProfileScreen,
-                arguments: event.organizer!.id,
-              );
-            },
-            child: Row(
-              children: [
-                Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.r),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        event.organizer!.picture ?? AppImages.user,
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                horizontalSpace(15),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    Routes.organizerProfileScreen,
+                    arguments: event.organizer!.id,
+                  );
+                },
+                child: Row(
                   children: [
-                    Text(
-                      event.organizer!.name ?? '',
-                      style: AppTextStyles.font15Black400,
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.r),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            event.organizer!.picture ?? AppImages.user,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                    Text(
-                      'Organizer',
-                      style: AppTextStyles.font12LightGray400,
-                    )
+                    horizontalSpace(15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          event.organizer!.name ?? '',
+                          style: AppTextStyles.font15Black400,
+                        ),
+                        Text(
+                          'Organizer',
+                          style: AppTextStyles.font12LightGray400,
+                        )
+                      ],
+                    ),
                   ],
                 ),
-                const Spacer(),
-                Container(
-                  width: 67.w,
-                  height: 28.h,
-                  decoration: ShapeDecoration(
-                    color: AppColors.primary.withOpacity(0.12),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7.r)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      AppStrings.follow,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.font12Primary400,
-                    ),
+              ),
+              const Spacer(),
+              Container(
+                width: 67.w,
+                height: 28.h,
+                decoration: ShapeDecoration(
+                  color: AppColors.primary.withOpacity(0.12),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.r)),
+                ),
+                child: Center(
+                  child: Text(
+                    AppStrings.follow,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.font12Primary400,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           verticalSpace(20),
           Text(
