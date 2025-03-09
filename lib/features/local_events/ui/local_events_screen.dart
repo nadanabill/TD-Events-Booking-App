@@ -18,24 +18,27 @@ class LocalEventsScreen extends StatelessWidget {
         title: Text(AppStrings.events, style: AppTextStyles.font24Black400),
         centerTitle: true,
       ),
-      body: BlocBuilder<LocalEventsCubit, EventsState>(
-        builder: (context, state) {
-          if (state is AllEventsLocalLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (state is AllEventsLocalFailure) {
-            return ErrorTextWidget(error: state.error.message!);
-          }
-          var events = context.read<LocalEventsCubit>().events;
-          return ListView.separated(
-            itemBuilder: (context, index) => LocalEventsItemWidget(
-              event: events[index],
-              isSaved: true,
-            ),
-            separatorBuilder: (context, index) => verticalSpace(20),
-            itemCount: events.length,
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: BlocBuilder<LocalEventsCubit, EventsState>(
+          builder: (context, state) {
+            if (state is AllEventsLocalLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state is AllEventsLocalFailure) {
+              return ErrorTextWidget(error: state.error.message!);
+            }
+            var events = context.read<LocalEventsCubit>().events;
+            return ListView.separated(
+              itemBuilder: (context, index) => LocalEventsItemWidget(
+                event: events[index],
+                isSaved: true,
+              ),
+              separatorBuilder: (context, index) => verticalSpace(20),
+              itemCount: events.length,
+            );
+          },
+        ),
       ),
     );
   }
