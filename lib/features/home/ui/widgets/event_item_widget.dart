@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:td_events_booking/core/constants/app_assets.dart';
 import 'package:td_events_booking/core/helpers/spaces.dart';
+import 'package:td_events_booking/core/helpers/share_service.dart';
 
+import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/models/event_model.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_colors.dart';
@@ -24,6 +26,9 @@ class EventItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onLongPress: () {
+        getIt<ShareService>().shareEvent(event);
+      },
       onTap: () {
         Navigator.pushNamed(
           context,
@@ -124,7 +129,6 @@ class EventItemWidget extends StatelessWidget {
                 ),
               ],
             ),
-            verticalSpace(10),
             Text(
               event.title!,
               maxLines: 1,
