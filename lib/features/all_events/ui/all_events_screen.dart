@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:td_events_booking/core/constants/app_assets.dart';
 import 'package:td_events_booking/core/constants/app_strings.dart';
 import 'package:td_events_booking/core/themes/app_colors.dart';
+import 'package:td_events_booking/features/all_events/ui/widgets/emty_events_widget.dart';
 
 import '../../../core/themes/app_text_styles.dart';
 import '../../../core/widgets/error_widget.dart';
@@ -48,7 +49,9 @@ class AllEventsScreen extends StatelessWidget {
           body: BlocBuilder<AllEventsCubit, AllEventsState>(
             builder: (context, state) {
               if (state is AllEventsSuccess) {
-                return const EventListWidget();
+                return context.read<AllEventsCubit>().allEventsList.isNotEmpty
+                    ? const EventListWidget()
+                    : const EmptyEventsWidget();
               } else if (state is AllEventsFailure) {
                 return ErrorTextWidget(
                   error: state.error.message ?? 'Unknown error occurred',
