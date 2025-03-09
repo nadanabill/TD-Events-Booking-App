@@ -49,6 +49,10 @@ dependencies:
   device_preview:
 # Date Time
   intl:
+# social share
+  share_plus:
+  path_provider:
+
   flutter_lints: ^4.0.0
 
 flutter:
