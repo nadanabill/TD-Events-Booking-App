@@ -35,7 +35,7 @@ The app interacts with a **RESTful API** to fetch event data, authenticate users
 
 ---
 ## 📱 Download the App  
-🔗 [**Download APK**](https://drive.google.com/file/d/1GvlUOWHldYVVE0YboD-xv_6c6Tbpy8e1/view?usp=sharing)  
+🔗 [**Download APK**](https://drive.google.com/drive/folders/15Ye_cZ8oE7Ivq0UYy7WAaOmvAFf4XBEF?usp=sharing)  
 
 ## 🛠 Built With  
 - **Flutter (Dart)** for the frontend  
@@ -61,12 +61,37 @@ To get started with the Event Booking app locally, ensure you follow these steps
 
 ## 📱 App Preview
 
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/7af0ab64-2942-44f3-8dc1-09bac0421e04" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/9a4ce4c5-0c57-46e5-a425-9e9ba9458b13" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/ea2ddda8-9ad3-4936-b5fd-bbc4048fb0dc" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/ec1430e1-1f20-4531-896e-8fe159a6228a" width="100"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c3bcbad9-960e-4c92-80a9-960c84275efb" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/dd330807-0c12-4760-a3ce-006a373fccaa" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/f3cd4427-79b6-4ea1-b445-582df06bcc3c" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/de770675-d8e7-4b84-bf63-94e08789d47a" width="100"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/65891109-001a-44c7-8767-c35a9427a3ad" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/28fc2076-ffcf-4c0a-b3d1-40bc18c2d445" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/052290f3-44a6-442a-92eb-9a17a3b1ac2a" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/932a715b-1b71-46b8-904c-5be90956990e" width="100"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/a5c2a600-2ac4-4094-8b99-dfe337827612" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/9bd74f09-c531-43f8-8300-f7d2c704a5b5" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/e1134d4f-8e2c-48ad-ba61-53864e13d75c" width="100"></td>
+    <td><img src="https://github.com/user-attachments/assets/8a612fb2-a533-4b73-82e8-fc07338e9e06" width="100"></td>
+  </tr>
+</table>
 
 
 ---
 
 ## 🤝 Contact With Me
-
 
 👩‍💻 **Nada Nabil Helmy**  
 📧 Email: [nadanabilhelmyy@gmail.com]  
