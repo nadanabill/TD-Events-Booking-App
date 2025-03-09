@@ -102,14 +102,16 @@ class LocalEventsItemWidget extends StatelessWidget {
             ),
             horizontalSpace(10),
             IconButton(
-                onPressed: () {
-                  context.read<LocalEventsCubit>().removeEvent(event);
-                  context.read<AllEventsCubit>().allEventsMap[event.eventId!] =
-                      false;
-                },
-                icon: SvgPicture.asset(
-                  AppSvgs.bookmark,
-                ))
+              onPressed: () {
+                context.read<LocalEventsCubit>().removeEvent(event);
+                context.read<AllEventsCubit>().allEventsMap[event.eventId!] =
+                    false;
+              },
+              icon: const Icon(
+                Icons.delete_outline_rounded,
+                color: AppColors.primary,
+              ),
+            ),
           ],
         ),
       ),
