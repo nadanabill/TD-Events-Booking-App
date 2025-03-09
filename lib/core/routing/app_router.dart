@@ -7,6 +7,7 @@ import 'package:td_events_booking/features/auth/otp/ui/otp_screen.dart';
 import 'package:td_events_booking/features/auth/register/logic/register_cubit.dart';
 import 'package:td_events_booking/features/auth/register/ui/register_screen.dart';
 import 'package:td_events_booking/features/event/ui/event_details_screen.dart';
+import 'package:td_events_booking/features/local_events/logic/local_events_cubit.dart';
 import 'package:td_events_booking/features/home/ui/layout.dart';
 import 'package:td_events_booking/features/onboarding/ui/onboarding_screen.dart';
 import 'package:td_events_booking/features/organizer_profile/ui/organizer_profile_screen.dart';
@@ -45,8 +46,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const OtpScreen());
       case Routes.layout:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => getIt<AllEventsCubit>()..getAllEvents(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<AllEventsCubit>()..getAllEvents(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    getIt<LocalEventsCubit>()..getSavedEvents(),
+              ),
+            ],
             child: const Layout(),
           ),
         );
