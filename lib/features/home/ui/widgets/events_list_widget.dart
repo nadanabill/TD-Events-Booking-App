@@ -42,6 +42,12 @@ class EventsListWidget extends StatelessWidget {
                       itemBuilder: (context, index) => EventItemWidget(
                         event:
                             context.read<AllEventsCubit>().allEventsList[index],
+                        isSaved: context.read<AllEventsCubit>().allEventsMap[
+                                context
+                                    .read<AllEventsCubit>()
+                                    .allEventsList[index]
+                                    .eventId!] ??
+                            false,
                       ),
                     )
                   : state is AllEventsFailure

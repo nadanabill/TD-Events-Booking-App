@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:td_events_booking/core/models/event_model.dart';
 
 part 'all_events_model.g.dart';
 
@@ -28,7 +29,7 @@ class Data {
   int? totalItems;
   @JsonKey(name: 'total_pages')
   int? totalPages;
-  List<Events>? events;
+  List<Event>? events;
 
   Data({
     required this.currentPage,
@@ -39,45 +40,4 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-}
-
-@JsonSerializable()
-class Events {
-  @JsonKey(name: 'event_id')
-  int? eventId;
-  String? picture;
-  String? date;
-  String? title;
-  String? address;
-  @JsonKey(name: 'number_of_going')
-  int? numberOfGoing;
-  Organizer? organizer;
-
-  Events({
-    required this.eventId,
-    required this.picture,
-    required this.date,
-    required this.title,
-    required this.address,
-    required this.numberOfGoing,
-    required this.organizer,
-  });
-
-  factory Events.fromJson(Map<String, dynamic> json) => _$EventsFromJson(json);
-}
-
-@JsonSerializable()
-class Organizer {
-  int? id;
-  String? name;
-  String? picture;
-
-  Organizer({
-    required this.id,
-    required this.name,
-    required this.picture,
-  });
-
-  factory Organizer.fromJson(Map<String, dynamic> json) =>
-      _$OrganizerFromJson(json);
 }
