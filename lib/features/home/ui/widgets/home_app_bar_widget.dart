@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:td_events_booking/core/constants/app_assets.dart';
 import 'package:td_events_booking/core/helpers/spaces.dart';
 import 'package:td_events_booking/core/themes/app_text_styles.dart';
+import 'package:td_events_booking/features/home/ui/layout.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/themes/app_colors.dart';
@@ -21,7 +22,9 @@ class HomeAppBarWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  drawerController.toggle?.call();
+                },
                 icon: SvgPicture.asset(
                   AppSvgs.menu,
                   width: 24.w,

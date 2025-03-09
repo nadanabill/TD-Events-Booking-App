@@ -8,4 +8,5 @@ class Routes {
   static const String eventDetailsScreen = "/eventDetailsScreen";
   static const String allEventsScreen = "/allEventsScreen";
   static const String organizerProfileScreen = '/organizerProfileScreen';
+  static const String localEventsScreen = '/localEventsScreen';
 }

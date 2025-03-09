@@ -32,8 +32,9 @@ class DrawerWidget extends StatelessWidget {
             ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) =>
-                  DrawerItemWidget(drawerItem: drawerItems[index]),
+              itemBuilder: (context, index) => DrawerItemWidget(
+                drawerItem: drawerItems[index],
+              ),
               separatorBuilder: (context, index) => verticalSpace(15),
               itemCount: drawerItems.length,
             ),
