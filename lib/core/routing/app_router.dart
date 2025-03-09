@@ -14,6 +14,7 @@ import 'package:td_events_booking/features/organizer_profile/ui/organizer_profil
 
 import '../../features/all_events/logic/all_events_cubit.dart';
 import '../../features/event/logic/event_details_cubit.dart';
+import '../../features/local_events/ui/local_events_screen.dart';
 import '../../features/organizer_profile/logic/organizer_cubit.dart';
 import '../../features/splash/splash_screen.dart';
 import '../di/dependency_injection.dart';
@@ -89,6 +90,14 @@ class AppRouter {
           ),
         );
 
+      case Routes.localEventsScreen:
+        final ctx = settings.arguments as BuildContext;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: getIt<LocalEventsCubit>()..getSavedEvents(),
+            child: const LocalEventsScreen(),
+          ),
+        );
       default:
         return null;
     }

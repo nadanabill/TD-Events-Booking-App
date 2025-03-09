@@ -20,6 +20,7 @@ class EventDetailsScreen extends StatelessWidget {
           final event = state.event.data;
           return Scaffold(
             body: InkWell(
+              splashColor: Colors.transparent,
               onLongPress: () {
                 getIt<ShareService>().shareEvent(event);
               },

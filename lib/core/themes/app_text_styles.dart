@@ -60,6 +60,12 @@ class AppTextStyles {
     color: AppColors.white,
     fontFamily: fontFamily,
   );
+  static TextStyle font20White500 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+    fontFamily: fontFamily,
+  );
   static TextStyle font12White400 = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
@@ -218,5 +224,10 @@ class AppTextStyles {
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
     color: Colors.red,
+  );
+  static TextStyle font18Primary500 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
   );
 }

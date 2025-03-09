@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:td_events_booking/core/helpers/spaces.dart';
 import 'package:td_events_booking/core/widgets/error_widget.dart';
+import 'package:td_events_booking/features/local_events/ui/widgets/empty_events_widget.dart';
 
 import '../../../core/constants/app_strings.dart';
 import '../../../core/themes/app_text_styles.dart';
@@ -29,6 +30,9 @@ class LocalEventsScreen extends StatelessWidget {
               return ErrorTextWidget(error: state.error.message!);
             }
             var events = context.read<LocalEventsCubit>().events;
+            if (events.isEmpty) {
+              return const EmptyEventsWidget();
+            }
             return ListView.separated(
               itemBuilder: (context, index) => LocalEventsItemWidget(
                 event: events[index],

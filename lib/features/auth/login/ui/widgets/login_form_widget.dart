@@ -20,7 +20,7 @@ class LoginFormWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           verticalSpace(50),
-          Text(AppStrings.signIn, style: AppTextStyles.font24Black400),
+          Text(AppStrings.signIn, style: AppTextStyles.font24Black500),
           verticalSpace(20),
           DefaultTextFormFieldWidget(
             controller: context.read<LoginCubit>().emailController,

@@ -1,6 +1,8 @@
 import 'package:td_events_booking/core/constants/app_assets.dart';
 import 'package:td_events_booking/core/constants/app_strings.dart';
 
+import '../../../../core/routing/routes.dart';
+
 class DrawerModel {
   final String icon;
   final String title;
@@ -32,7 +34,7 @@ List<DrawerModel> drawerItems = [
   DrawerModel(
     icon: AppSvgs.bookmark1,
     title: AppStrings.bookmarks,
-    router: '',
+    router: Routes.localEventsScreen,
   ),
   DrawerModel(
     icon: AppSvgs.mail,
