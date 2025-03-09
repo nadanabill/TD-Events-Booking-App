@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:td_events_booking/features/local_events/logic/local_events_cubit.dart';
+import 'package:td_events_booking/features/local_events/ui/local_events_screen.dart';
 import 'package:td_events_booking/features/home/ui/widgets/bottom_bar_item_widget.dart';
 import 'package:td_events_booking/features/home/ui/widgets/home_body_widget.dart';
 
@@ -17,7 +20,7 @@ class LayoutMainScreen extends StatefulWidget {
 class _LayoutMainScreenState extends State<LayoutMainScreen> {
   List<Widget> tabs = [
     const HomeBodyWidget(),
-    Container(),
+    const LocalEventsScreen(),
     Container(),
     Container(),
   ];
@@ -67,6 +70,8 @@ class _LayoutMainScreenState extends State<LayoutMainScreen> {
               onTap: () {
                 setState(
                   () {
+                    BlocProvider.of<LocalEventsCubit>(context).getSavedEvents();
+
                     if (currentIndex != 1) {
                       currentIndex = 1;
                     }
