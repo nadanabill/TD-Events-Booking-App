@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:td_events_booking/core/helpers/share_service.dart';
 import 'package:td_events_booking/features/auth/login/logic/login_cubit.dart';
 import 'package:td_events_booking/features/auth/register/data/api/register_api_service.dart';
 import 'package:td_events_booking/features/auth/register/logic/register_cubit.dart';
@@ -59,4 +60,7 @@ Future<void> setupGetIt() async {
 
   // event storage
   getIt.registerLazySingleton<LocalEventsCubit>(() => LocalEventsCubit());
+
+  // shared service
+  getIt.registerLazySingleton<ShareService>(() => ShareService(dio));
 }
