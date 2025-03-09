@@ -21,8 +21,7 @@ class EventDetailsScreen extends StatelessWidget {
               slivers: [
                 SliverToBoxAdapter(
                   child: EventDetailsHeaderWidget(
-                    eventImage: event!.picture!,
-                    guestCount: event.numberOfGoing!,
+                    event: event!,
                   ),
                 ),
                 SliverToBoxAdapter(

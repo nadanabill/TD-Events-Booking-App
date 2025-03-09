@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:td_events_booking/features/event/logic/event_details_cubit.dart';
 
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/helpers/spaces.dart';
+import '../../../../core/models/event_model.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 
 class EventDetailsHeaderWidget extends StatelessWidget {
-  final String eventImage;
-  final int guestCount;
+  final Event event;
 
   const EventDetailsHeaderWidget({
     super.key,
-    required this.eventImage,
-    required this.guestCount,
+    required this.event,
   });
 
   @override
@@ -28,7 +29,7 @@ class EventDetailsHeaderWidget extends StatelessWidget {
                 height: 240,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(eventImage),
+                    image: NetworkImage(event.picture!),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -39,8 +40,10 @@ class EventDetailsHeaderWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.arrow_back,
-                            color: AppColors.white),
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: AppColors.white,
+                        ),
                         onPressed: () => Navigator.pop(context),
                       ),
                       horizontalSpace(5),
@@ -56,9 +59,16 @@ class EventDetailsHeaderWidget extends StatelessWidget {
                           color: Colors.white.withOpacity(0.3),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Icon(
-                          Icons.bookmark_rounded,
-                          color: AppColors.white,
+                        child: InkWell(
+                          onTap: () {
+                            context.read<EventDetailsCubit>().saveEvent(event);
+                          },
+                          child: Icon(
+                            context.watch<EventDetailsCubit>().isSaved
+                                ? Icons.bookmark_rounded
+                                : Icons.bookmark_outline_rounded,
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                     ],
@@ -122,7 +132,7 @@ class EventDetailsHeaderWidget extends StatelessWidget {
                   ),
                   horizontalSpace(10),
                   Text(
-                    "+$guestCount Going",
+                    "+${event.numberOfGoing} Going",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.font12Primary500,

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:td_events_booking/features/event/data/models/event_details_model.dart';
 import 'package:td_events_booking/features/event/logic/event_details_cubit.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../../../core/helpers/spaces.dart';
+import '../../../../core/models/event_model.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 import 'details_row_widget.dart';
 
 class EventDetailsBodyWidget extends StatelessWidget {
-  final EventData event;
+  final Event event;
 
   const EventDetailsBodyWidget({super.key, required this.event});
 

@@ -49,13 +49,13 @@ class _EventListWidgetState extends State<EventListWidget> {
                   context.read<AllEventsCubit>().hasMorePages) {
                 return const Center(child: CircularProgressIndicator());
               }
-              // if (index ==
-              //         context.read<AllEventsCubit>().allEventsList.length &&
-              //     !context.read<AllEventsCubit>().hasMorePages) {
-              //   return SizedBox();
-              // }
               return EventsItemWidget(
                 event: context.read<AllEventsCubit>().allEventsList[index],
+                isSaved: context.read<AllEventsCubit>().allEventsMap[context
+                        .read<AllEventsCubit>()
+                        .allEventsList[index]
+                        .eventId!] ??
+                    false,
               );
             },
             separatorBuilder: (context, index) => verticalSpace(15),

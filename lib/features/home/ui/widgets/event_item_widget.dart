@@ -4,17 +4,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:td_events_booking/core/constants/app_assets.dart';
 import 'package:td_events_booking/core/helpers/spaces.dart';
-import 'package:td_events_booking/features/all_events/data/models/all_events_model.dart';
 
+import '../../../../core/models/event_model.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 import '../../../all_events/logic/all_events_cubit.dart';
 
 class EventItemWidget extends StatelessWidget {
-  final Events event;
+  final Event event;
+  final bool isSaved;
 
-  const EventItemWidget({super.key, required this.event});
+  const EventItemWidget({
+    super.key,
+    required this.event,
+    required this.isSaved,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,10 @@ class EventItemWidget extends StatelessWidget {
         Navigator.pushNamed(
           context,
           Routes.eventDetailsScreen,
-          arguments: event.eventId,
+          arguments: {
+            'eventId': event.eventId,
+            'isSaved': isSaved,
+          },
         );
       },
       child: Container(
@@ -91,7 +99,9 @@ class EventItemWidget extends StatelessWidget {
                   right: 8,
                   top: 8,
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<AllEventsCubit>().saveEvent(event);
+                    },
                     child: Container(
                       height: 30.h,
                       width: 30.w,
@@ -100,7 +110,15 @@ class EventItemWidget extends StatelessWidget {
                         color: AppColors.white.withOpacity(0.7),
                       ),
                       padding: const EdgeInsets.all(8),
-                      child: SvgPicture.asset(AppSvgs.bookmark1),
+                      child: SvgPicture.asset(context
+                                      .read<AllEventsCubit>()
+                                      .allEventsMap[event.eventId!] !=
+                                  null &&
+                              context
+                                  .read<AllEventsCubit>()
+                                  .allEventsMap[event.eventId!]!
+                          ? AppSvgs.bookmark
+                          : AppSvgs.bookmark1),
                     ),
                   ),
                 ),

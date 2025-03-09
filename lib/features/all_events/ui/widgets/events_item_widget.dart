@@ -2,19 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:td_events_booking/features/all_events/data/models/all_events_model.dart';
 import 'package:td_events_booking/features/all_events/logic/all_events_cubit.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/helpers/spaces.dart';
+import '../../../../core/models/event_model.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_styles.dart';
 
 class EventsItemWidget extends StatelessWidget {
-  final Events event;
+  final Event event;
+  final bool isSaved;
 
-  const EventsItemWidget({super.key, required this.event});
+  const EventsItemWidget({
+    super.key,
+    required this.event,
+    required this.isSaved,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,10 @@ class EventsItemWidget extends StatelessWidget {
         Navigator.pushNamed(
           context,
           Routes.eventDetailsScreen,
-          arguments: event.eventId,
+          arguments: {
+            'eventId': event.eventId,
+            'isSaved': isSaved,
+          },
         );
       },
       child: Container(

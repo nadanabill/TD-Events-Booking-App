@@ -60,11 +60,14 @@ class AppRouter {
           ),
         );
       case Routes.eventDetailsScreen:
-        final eventId = settings.arguments as int;
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) =>
-                getIt<EventDetailsCubit>()..getEventDetails(eventId: eventId),
+            create: (context) => getIt<EventDetailsCubit>()
+              ..getEventDetails(
+                eventId: args['eventId'],
+                saved: args['isSaved'],
+              ),
             child: const EventDetailsScreen(),
           ),
         );
