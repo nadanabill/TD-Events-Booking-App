@@ -17,26 +17,32 @@ class _RememberForgetWidgetState extends State<RememberForgetWidget> {
   Widget build(BuildContext context) {
     return  Row(
       children: [
-        Switch(
-            inactiveThumbColor: AppColors.primary,
-            inactiveTrackColor: AppColors.white,
-            activeColor: AppColors.white,
-            activeTrackColor: AppColors.primary,
-            value: rememberMe,
-            onChanged: (value) {
-              rememberMe = !rememberMe;
-              setState(() {});
-            }),
+        Expanded(
+          child: FittedBox(
+            child: Switch(
+                inactiveThumbColor: AppColors.primary,
+                inactiveTrackColor: AppColors.white,
+                activeColor: AppColors.white,
+                activeTrackColor: AppColors.primary,
+                value: rememberMe,
+                onChanged: (value) {
+                  rememberMe = !rememberMe;
+                  setState(() {});
+                }),
+          ),
+        ),
         Text(
           AppStrings.rememberMe,
           style: AppTextStyles.font14Black400,
         ),
         const Spacer(),
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            AppStrings.forgotPassword,
-            style: AppTextStyles.font14Black400,
+        FittedBox(
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              AppStrings.forgotPassword,
+              style: AppTextStyles.font14Black400,
+            ),
           ),
         ),
       ],
