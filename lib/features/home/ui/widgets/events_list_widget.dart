@@ -30,7 +30,7 @@ class EventsListWidget extends StatelessWidget {
             },
           ),
           SizedBox(
-              height: 270.h,
+              height: 290.h,
               child: state is AllEventsSuccess
                   ? ListView.separated(
                       scrollDirection: Axis.horizontal,
