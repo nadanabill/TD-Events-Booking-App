@@ -28,7 +28,11 @@ class ApiErrorHandler {
           return ApiErrorModel(message: "Something went wrong");
       }
     } else {
-      return ApiErrorModel(message: "Unknown error occurred");
+      return error == 'Not connected to internet'
+          ? ApiErrorModel(
+              message:
+                  "No Internet Connection. Please check your connection and try again")
+          : ApiErrorModel(message: "Unknown error occurred");
     }
   }
 }
